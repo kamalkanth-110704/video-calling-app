@@ -9,9 +9,11 @@ function VideoRoom() {
     const userId = Date.now().toString();
     const userName = "kamal kanth";
 
-    const appId = 184446587;
-    const serverSecret = "bb79fa5b2b84ce717e1e16616acf3174";
+    // Get App ID and Server Secret from Vercel environment variables
+    const appId = parseInt(import.meta.env.VITE_APP_ID);
+    const serverSecret = import.meta.env.VITE_SERVER_SECRET;
 
+    // Generate kit token directly (for demo only)
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appId,
       serverSecret,
@@ -30,21 +32,13 @@ function VideoRoom() {
         },
       ],
       scenario: {
-        mode: ZegoUIKitPrebuilt.OneONoneCall,
+        mode: ZegoUIKitPrebuilt.OneONoneCall, // or GroupCall
       },
     });
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      backgroundColor: '#111',
-      color: '#fff',
-      fontFamily: 'Arial, sans-serif'
-    }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div ref={myMeeting} />
     </div>
   );
