@@ -9,8 +9,8 @@ function VideoRoom() {
     const userId = Date.now().toString();
     const userName = "kamal kanth";
 
-    const appId = 184446587; // replace with your actual ZEGO App ID
-    const serverSecret = "bb79fa5b2b84ce717e1e16616acf3174"; // replace with your actual server secret
+    const appId = 184446587;
+    const serverSecret = "bb79fa5b2b84ce717e1e16616acf3174";
 
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appId,
@@ -30,13 +30,21 @@ function VideoRoom() {
         },
       ],
       scenario: {
-        mode: ZegoUIKitPrebuilt.OneONoneCall, // Or GroupCall
+        mode: ZegoUIKitPrebuilt.OneONoneCall,
       },
     });
   };
 
   return (
-    <div>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100vh',
+      backgroundColor: '#111',
+      color: '#fff',
+      fontFamily: 'Arial, sans-serif'
+    }}>
       <div ref={myMeeting} />
     </div>
   );
